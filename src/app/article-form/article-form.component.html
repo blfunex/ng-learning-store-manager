@@ -1,0 +1,59 @@
+<header class="container">
+  <h1>Add article</h1>
+</header>
+<main class="container">
+  <form
+    #newArticleForm="ngForm"
+    (ngSubmit)="onSubmitNewArticleForm(newArticleForm,{
+      name: newArticleForm.value.name,
+      description: newArticleForm.value.description,
+      price: newArticleForm.value.price,
+    })"
+  >
+    <div class="form-floating mb-3">
+      <input
+        ngModel
+        name="name"
+        type="text"
+        class="form-control"
+        id="article-name"
+        placeholder="Name"
+      />
+      <label for="article-name">Name</label>
+    </div>
+    <div class="form-floating mb-3">
+      <textarea
+        ngModel
+        name="description"
+        type="text"
+        class="form-control"
+        id="article-description"
+        placeholder="Description"
+        style="height: 8em"
+      ></textarea>
+      <label for="article-description">Description</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input
+        ngModel
+        name="price"
+        type="number"
+        class="form-control"
+        id="article-price"
+        placeholder="Price"
+      />
+      <label for="article-price">Price</label>
+    </div>
+
+    <menu class="d-flex list-unstyled flex-row-reverse gap-3">
+      <li>
+        <button class="btn btn-primary" type="submit">Add</button>
+      </li>
+      <li>
+        <button (click)="onCancel()" class="btn btn-secondary" type="button">
+          Cancel
+        </button>
+      </li>
+    </menu>
+  </form>
+</main>
