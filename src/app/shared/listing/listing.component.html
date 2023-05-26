@@ -1,16 +1,28 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Description</th>
-      <th scope="col">Price</th>
+      <th scope="col"></th>
+      <th scope="col" *ngFor="let key of getNames()">{{ key }}</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of items">
-      <th scope="row">{{ item.id }}</th>
+    <tr *ngFor="let item of items; let i = index">
+      <td>
+        <button class="btn btn-danger" (click)="delete.emit(item.id)">
+          <i class="fa fa-trash"> Delete</i>
+        </button>
+        <button class="btn btn-primary" (click)="edit.emit(item.id)">
+          <i class="fa fa-edit"> Edit</i>
+        </button>
+      </td>
       <td *ngFor="let value of getValues(item)">{{ value }}</td>
+    </tr>
+    <tr>
+      <td [colSpan]="keys.length">
+        <button class="btn btn-success" (click)="add.emit()">
+          <i class="fa fa-plus"></i> Add
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>

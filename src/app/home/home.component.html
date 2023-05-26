@@ -1,5 +1,7 @@
-<ul>
-  <li><a routerLink="/article/new">Add article</a></li>
-</ul>
-
-<app-listing [items]="store.articles"></app-listing>
+<app-listing
+  [items]="store.articles"
+  [keys]="['name', 'description', 'price']"
+  (delete)="onDeleteArticle($event)"
+  (edit)="onEditArticle($event)"
+  (add)="onAddArticle()"
+></app-listing>
