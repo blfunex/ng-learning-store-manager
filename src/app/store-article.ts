@@ -4,3 +4,5 @@ export interface StoreArticle {
   description: string;
   price: number;
 }
+
+export type DocData<T extends { id: string }> = Omit<T, 'id'>;

@@ -1,13 +1,19 @@
 <header class="container">
-  <h1>Add article</h1>
+  <h1>
+    <span [ngSwitch]="mode">
+      <span *ngSwitchCase="'new'">Create</span>
+      <span *ngSwitchCase="'edit'">Edit</span>
+      <span *ngSwitchDefault>Zabi</span>
+    </span>
+    article
+  </h1>
 </header>
 <main class="container">
   <form
-    #newArticleForm="ngForm"
-    (ngSubmit)="onSubmitNewArticleForm(newArticleForm,{
-      name: newArticleForm.value.name,
-      description: newArticleForm.value.description,
-      price: newArticleForm.value.price,
+    (ngSubmit)="onSubmit({
+      name: form.value.name,
+      description: form.value.description,
+      price: form.value.price,
     })"
   >
     <div class="form-floating mb-3">

@@ -10,9 +10,13 @@ import { Router } from '@angular/router';
 export class HomeComponent {
   constructor(readonly store: StoreDataService, private router: Router) {}
 
-  onEditArticle(id: string) {}
+  onEditArticle(id: string) {
+    this.router.navigate(['article', id]);
+  }
 
-  onDeleteArticle(id: string) {}
+  onDeleteArticle(id: string) {
+    this.store.delete(id);
+  }
 
   onAddArticle() {
     this.router.navigate(['article/new']);
